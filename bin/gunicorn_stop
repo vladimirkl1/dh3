@@ -1,0 +1,6 @@
+#!/bin/bash
+
+kill -9 `ps aux |grep gunicorn |grep dhru | awk '{ print $2 }'`  # will kill all of the workers
+
+echo "Kill all Gunicorn"
+

@@ -1,0 +1,9 @@
+h1 a {
+    color: #3333ff;
+}
+body {
+    padding-left: 15px;
+}
+.selector-for-some-widget {
+  box-sizing: content-box;
+}

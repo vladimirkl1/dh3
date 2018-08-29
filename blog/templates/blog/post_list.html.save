@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>DH blog</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">DH Blog</a></h1>
+        </div>
+        <div>
+            
+{% for post in posts %}
+                {{ post }}
+            {% endfor %}    
+        </div>
+    </body>
+</html>

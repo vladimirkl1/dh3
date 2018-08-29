@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+<!--  load store_format_tf  -->
+
+{% block title %} DHuman home page {% endblock %}
+{% block nobreadcrumb %}{% endblock %}
+{% block content %}
+
+   {% if messages %}
+        {% for message in messages %}
+        <p class="alert alert-dismissable {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ message }}
+        </p>
+      {% endfor %}
+    {% endif %}
+	
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Добро пожаловать на DigitaLH!</h1>
+        <p>
+            {% with myvar="DigitaLH – интеллектуальный сервис для поиска спутника жизни" %}
+                
+            {% endwith%}
+        </p>
+        <p>
+            Сейчас DigitaLH доступен любому человеку, желающему найти спутника жизни
+        </p>
+        <p><a class="btn btn-success btn-lg" href="{% url 'about:index'%}">Learn more &raquo;</a></p>
+      </div>
+      <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-5">
+              <h2>Присоединяйтесь!</h2>
+              <h4>Войти через соцсеть</h4>
+              <button class="btn btn-default btn-lg">В контакте</button>
+              <button class="btn btn-default btn-lg">Facebook</button>
+            </div>
+            <div class="col-sm-2">
+                <h2>или</h2>
+            </div>
+            <div class="col-sm-5">
+              <h2>Ответьте на несколько вопросов</h2>
+               {% block content-signup %}
+               <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  {% if redirect_field_value %}
+                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                  {% endif %}
+                  <button type="submit">Sign Up &raquo;</button>
+               </form>
+               {% endblock %}
+            </div>
+          </div>
+      </div>
+      <!-- Услуги -->
+    <!-- Добавить стр 6537 в bootstrap.css
+      .bg-grey {
+            background-color: #f6f6f6;
+        } -->
+      <div class="container-fluid text-center bg-grey">
+          <h2>О сервисе</h2>
+          <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-8">
+              <h4>
+              <ul>
+                <li>Устали тратить время и душевные силы на неподходящих людей</li>
+                <li>Надоело лечить раны после неудавшихся отношений</li>
+              </ul>
+            Тогда, сервис интеллектуального поиска спутника жизни для Вас!<br>
+            Используя современные инновационные алгоритмы обработки данных мы подберем достойного спутника жизни, подходящего именно Вам!
+          </div>
+          </h4>
+          </div>
+      </div>
+      <div class="col-sm-2">
+      </div>
+      <div class="container-fluid text-center">
+          <div class="row">
+              <h2>При подборе спутника жизни мы используем такие характеристики, как:</h2>
+            <div class="col-sm-6">
+              <span class="glyphicon glyphicon-fire logo-small"></span><span class="glyphicon glyphicon-tint logo-small"></span>
+              <h4>Темперамент и психотип</h4>
+              <p>Lorem ipsum dolor sit amet..</p>
+            </div>
+            <div class="col-sm-6">
+              <span class="glyphicon glyphicon-briefcase logo-small"></span>
+              <h4>Общие интересы</h4>
+              <p>Lorem ipsum dolor sit amet..</p>
+            </div>
+            </div>
+            <br><br>
+          <div class="row">
+            <div class="col-sm-6">
+              <span class="glyphicon glyphicon-sunglasses logo-small"></span>
+              <h4>Визуальное восприятие</h4>
+              <p>Lorem ipsum dolor sit amet..</p>
+            </div>
+            <div class="col-sm-6">
+              <span class="glyphicon glyphicon-user logo-small"></span><span class="glyphicon glyphicon-user logo-small"></span><span class="glyphicon glyphicon-user logo-small"></span>
+              <h4>Наличие общих друзей</h4>
+              <p>Lorem ipsum dolor sit amet..</p>
+            </div>
+          </div>
+      </div>
+
+      <!-- Example row of columns -->
+    <div class="container-fluid text-center">
+      <div class="row">
+        <div class="col-md-3">
+          <h2>Магазин</h2>
+          <p><a class="btn btn-default" href="{% url 'stores:index' %}">View store details &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+          <h2>Каталог</h2>
+          <p><a class="btn btn-default" href="{% url 'items:index' %}">View item details &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+          <h2>Заказ online</h2>
+          <p><a class="btn btn-default" href="{% url 'online:index' %}">Order online &raquo;</a></p>
+        </div>
+	    <div class="col-md-3">
+          <h2>Social</h2>
+          <p><a class="btn btn-default" href="{% url 'social:index' %}">Share your media &raquo;</a></p>
+        </div>	
+      </div>
+    </div>
+{% endblock %}
